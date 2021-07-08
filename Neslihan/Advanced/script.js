@@ -25,7 +25,7 @@ var Vehicle = /** @class */ (function () {
     Vehicle.prototype.printCard = function () {
         var card = "";
         if (this.left_align == false) {
-            card = "<div class=\"row row-cols-1 row-cols-md-2 g-4 align-items-center\">\n        <div class=\"col\">\n            <div class=\"card\">\n                <img src=" + this.image + " class=\"card-img-top\"\n                    alt=" + this.brand + " " + this.model + ">\n                <div class=\"card-body\">\n                    <h5 class=\"card-title\">" + this.brand + this.model + "</h5>\n                    <hr>\n                    <div class=\"d-flex justify-content-between\">\n                        <p class=\"card-text\">\n                            Construction year: 2019 <br>";
+            card = "<div class=\"row row-cols-1 row-cols-md-2 g-4 align-items-center\">\n        <div class=\"col\">\n            <div class=\"card\">\n                <img src=" + this.image + " class=\"card-img-top\"\n                    alt=" + this.brand + " " + this.model + ">\n                <div class=\"card-body\">\n                    <h5 class=\"card-title\">" + this.brand + this.model + "</h5>\n                    <hr>\n                    <div class=\"d-flex justify-content-between alignt-items-center\">\n                        <p class=\"card-text\">\n                            Construction year: 2019 <br>";
         }
         else {
             card = "<div class=\"row row-cols-1 row-cols-md-2 g-4 align-items-center\">\n            <p class=\"p-5\">" + this.description + "</p>\n            <div class=\"col\">\n                <div class=\"card\">\n                    <img src=" + this.image + " class=\"card-img-top\"\n                        alt=" + this.brand + " " + ">\n                    <div class=\"card-body\">\n                        <h5 class=\"card-title\">" + this.brand + " " + "</h5>\n                        <hr>\n                        <div class=\"d-flex justify-content-between\">\n                            <p class=\"card-text\">\n                                Construction year: " + this.construction_year + "<br>";
@@ -45,7 +45,7 @@ var MotorVehicle = /** @class */ (function (_super) {
     }
     MotorVehicle.prototype.extendCard = function () {
         var card = _super.prototype.printCard.call(this) +
-            "Seats: " + this.nr_of_seats + "<br>\n        Fuel: " + this.fuel + "<br>\n        km: " + this.km + "\n    </p>\n    <button class=\"me-5\" type=\"button\">Show Price</button>\n</div>\n</div>\n</div>\n</div>";
+            "Seats: " + this.nr_of_seats + "<br>\n        Fuel: " + this.fuel + "<br>\n        km: " + this.km + "\n    </p>\n    <div class=\"test\" ></div>\n    <button class=\"me-5\" type=\"button\">Show Price</button>\n</div>\n</div>\n</div>\n</div>";
         if (this.left_align == false) {
             card += "<p class=\"p-5\">" + this.description + "</p></div>";
         }
@@ -54,7 +54,7 @@ var MotorVehicle = /** @class */ (function (_super) {
         }
         return card;
     };
-    MotorVehicle.prototype.calcPrice = function () {
+    MotorVehicle.prototype.calcPrice = function (i) {
         var p = 7000;
         if (this.nr_of_seats > 2) {
             p = p * 1.4; // + 40%
@@ -62,7 +62,7 @@ var MotorVehicle = /** @class */ (function (_super) {
         if (this.brand == "BMW") {
             p = p * 1.2;
         }
-        console.log(p);
+        document.getElementsByClassName("test")[i].innerHTML = p.toString() + "\u20AC";
         return p;
     };
     return MotorVehicle;
@@ -90,7 +90,7 @@ for (var _i = 0, arr_1 = arr; _i < arr_1.length; _i++) {
 var btn = document.getElementsByTagName("button");
 var _loop_1 = function (i) {
     btn[i].addEventListener("click", function () {
-        arr[i].calcPrice();
+        arr[i].calcPrice(i);
     });
 };
 for (var i = 0; i < btn.length; i++) {

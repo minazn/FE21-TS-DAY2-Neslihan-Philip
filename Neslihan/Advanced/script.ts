@@ -27,7 +27,7 @@ class Vehicle {
                 <div class="card-body">
                     <h5 class="card-title">`+ this.brand + this.model + `</h5>
                     <hr>
-                    <div class="d-flex justify-content-between">
+                    <div class="d-flex justify-content-between alignt-items-center">
                         <p class="card-text">
                             Construction year: 2019 <br>`;
 
@@ -67,6 +67,7 @@ class MotorVehicle extends Vehicle { // ①
         Fuel: `+ this.fuel + `<br>
         km: ` + this.km + `
     </p>
+    <div class="test" ></div>
     <button class="me-5" type="button">Show Price</button>
 </div>
 </div>
@@ -79,7 +80,7 @@ class MotorVehicle extends Vehicle { // ①
         }
         return card;
     }
-    calcPrice() {
+    calcPrice(i) {
         var p = 7000;
         if (this.nr_of_seats > 2) {
             p = p * 1.4; // + 40%
@@ -87,7 +88,7 @@ class MotorVehicle extends Vehicle { // ①
         if (this.brand == "BMW") {
             p = p * 1.2;
         }
-        console.log(p);
+        document.getElementsByClassName("test")[i].innerHTML = p.toString() + `€`;
         return p;
     }
 
@@ -136,7 +137,7 @@ var btn = document.getElementsByTagName("button");
 
 for (let i=0; i<btn.length; i++){
     btn[i].addEventListener("click", function(){
-        arr[i].calcPrice();
+        arr[i].calcPrice(i);
     });
 }
 
