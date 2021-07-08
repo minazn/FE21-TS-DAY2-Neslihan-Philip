@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Festive&display=swap");
+#herohead {
+  background-image: url("https://cdn.pixabay.com/photo/2012/05/29/00/43/car-49278__340.jpg");
+  background-size: covoer;
+  height: 100vh;
+  width: 100%;
+  background-repeat: no-repeat;
+}
+
+#herohead #we-have-the-best {
+  position: absolute;
+  top: 40vh;
+  right: 30%;
+}
+
+#herohead #vehicletitle {
+  position: absolute;
+  top: 60vh;
+  right: 40%;
+  font-family: 'Festive', cursive;
+  font-size: 80pt;
+  color: #3B0E0E;
+}
+/*# sourceMappingURL=style.css.map */
